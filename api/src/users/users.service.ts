@@ -10,22 +10,24 @@ import { plainToInstance } from 'class-transformer';
 export class UsersService {
   constructor(private readonly prismaService: PrismaService) {}
   async createUser(data: CreateUserRequest): Promise<UserResponse> {
-    try {
-      const user = await this.prismaService.user.create({
-        data: {
-          ...data,
-          password: await bcrypt.hash(data.password, 10),
-        },
-      });
-
-      return plainToInstance(UserResponse, user, {
-        excludeExtraneousValues: true,
-      });
-    } catch (error) {
-      if (error.code === 'P2002') {
-        throw new UnprocessableEntityException('Email already exists');
-      }
-      throw error;
+    const existingUser = await this.prismaService.user.findUnique({
+      where: {
+        email: data.email,
+      },
+    });
+    if (existingUser) {
+      throw new UnprocessableEntityException('Email already exists');
     }
+
+    const user = await this.prismaService.user.create({
+      data: {
+        ...data,
+        password: await bcrypt.hash(data.password, 10),
+      },
+    });
+
+    return plainToInstance(UserResponse, user, {
+      excludeExtraneousValues: true,
+    });
   }
 }
