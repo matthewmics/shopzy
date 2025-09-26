@@ -18,7 +18,7 @@ async function bootstrap() {
   );
 
   const port = parseInt(app.get(ConfigService).getOrThrow('PORT'));
-  const server = (await app.listen(port)) as Server;
+  const server = (await app.listen(port));
 
   const addressInfo = server.address() as AddressInfo;
   const host = addressInfo.address === '::' ? 'localhost' : addressInfo.address;
