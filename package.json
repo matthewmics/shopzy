@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "scripts": {
+    "lint:ui": "cd ui && npm run lint",
+    "lint:api": "cd api && npm run lint",
+    "lint": "npm run lint:ui && npm run lint:api",
+    "prepare": "husky install"
+  }
+}
