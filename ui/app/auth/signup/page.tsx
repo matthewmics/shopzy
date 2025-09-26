@@ -5,7 +5,7 @@ import { Button, Link, Stack, TextField } from "@mui/material";
 import NextLink from "next/link";
 import createUser from "./create-user";
 
-const page = () => {
+const Page = () => {
   const [state, formAction] = useActionState(createUser, {
     error: "",
   });
@@ -40,4 +40,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
