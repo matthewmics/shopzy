@@ -1,7 +1,6 @@
-import { Expose } from "class-transformer";
+import { Expose } from 'class-transformer';
 
 export class UserResponse {
-
   @Expose()
   readonly id: number;
 
