@@ -25,7 +25,4 @@ async function bootstrap() {
 
   console.log(`Server is running at http://${host}:${addressInfo.port}`);
 }
-bootstrap().catch((err) => {
-  console.log('Error starting the app', err);
-  process.exit(1);
-});
+bootstrap()
