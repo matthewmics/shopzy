@@ -25,4 +25,4 @@ async function bootstrap() {
 
   console.log(`Server is running at http://${host}:${addressInfo.port}`);
 }
-bootstrap()
+bootstrap();
