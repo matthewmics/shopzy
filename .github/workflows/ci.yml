@@ -39,6 +39,9 @@ jobs:
       - name: Lint API
         run: npm run lint --workspace api
 
+      - name: Generate Prisma client
+        run: npm run prisma:generate --workspace api
+
       # Run tests (if you have them enabled)
       # - name: Run tests UI
       #   run: npm test --workspace ui
