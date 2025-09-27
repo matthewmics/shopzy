@@ -23,7 +23,7 @@ async function bootstrap() {
   const host = addressInfo.address === '::' ? 'localhost' : addressInfo.address;
 
   console.log(`Server is running at http://${host}:${addressInfo.port}`);
-  console.log('CI TEST');
+  console.log('CI TEST 3');
 }
 bootstrap().catch((err) => {
   console.error('Error during app bootstrap:', err);
