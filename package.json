@@ -7,5 +7,9 @@
     "lint:api": "cd api && npm run lint",
     "lint": "npm run lint:ui && npm run lint:api",
     "prepare": "husky install"
-  }
+  },
+  "workspaces": [
+    "ui",
+    "api"
+  ]
 }

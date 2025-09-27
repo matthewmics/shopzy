@@ -28,12 +28,25 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: npm
 
+      # Install dependencies for all workspaces
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Lint UI & API
-        run: npm run lint
+      # Run lint in each workspace
+      - name: Lint UI
+        run: npm run lint --workspace ui
 
+      - name: Lint API
+        run: npm run lint --workspace api
+
+      # Run tests (if you have them enabled)
+      # - name: Run tests UI
+      #   run: npm test --workspace ui
+      #
+      # - name: Run tests API
+      #   run: npm test --workspace api
+
+      # Build each workspace
       - name: Build UI
         run: npm run build --workspace ui
 
